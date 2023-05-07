@@ -33,8 +33,12 @@ while :; do
       _backupdir=$2
       shift
     else
-      die 'ERROR: "--file" requires a non-empty argument.'
+      die 'ERROR: "-d, --directory" requires a non-empty argument.'
     fi
+    ;;
+  --)
+    shift
+    break
     ;;
    *)
     break 
