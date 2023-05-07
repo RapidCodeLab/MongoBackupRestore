@@ -1,8 +1,23 @@
 #!/bin/bash
 
-_backupdir="mongobackups"
-_container="mongoddb"
-_dbname="gopusher"
+show_help(){
+  cat << EOF
+  Usage: ${0##*/} [-h] [-d, --PATH] [-c CONTAINER NAME] [-b DATABASE NAME]
+EOF
+}
+
+die(){
+  printf '%s\n' "$1" >&2
+  exit 1
+}
+
+show_help
+exit 0 
+
+# var inititalization
+_backupdir=
+_container=
+_dbname=
 _dump="/dump"
 
 # check direcory exists, make if not exists
@@ -23,3 +38,4 @@ docker cp $_container_path $_backupdir
 tar czf "$_backupdir/$_current_date.tar.gz"
 # Exit with done message
 exit 0
+
