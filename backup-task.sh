@@ -12,7 +12,7 @@ then
 fi  
 
 # making date for filename
-d=`date '+%d-%m-%y'`  
+_current_date=`date '+%d-%m-%y'`  
 #
 # Count of backup files, delete first if more than amount from settings 
 # 
@@ -20,6 +20,6 @@ d=`date '+%d-%m-%y'`
 docker exec -i $_container /usr/bin/mongodump --db $_dbname --out $_dump 
 _container_path="$_container:$_dump"
 docker cp $_container_path $_backupdir
-tar czf $_backupdir+"/"+$d+".tar.gz"
+tar czf "$_backupdir/$_current_date.tar.gz"
 # Exit with done message
 exit 0
