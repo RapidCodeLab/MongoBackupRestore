@@ -1,8 +1,12 @@
 #!/bin/bash
 
 show_help(){
-  cat << EOF
-  Usage: ${0##*/} [-h] [-d, --PATH] [-c CONTAINER NAME] [-b DATABASE NAME]
+cat << EOF
+  Usage: ${0##*/} 
+  [-h, --help]
+  [-d, --directory PATH]
+  [-c, --container CONTAINER NAME]
+  [-db, --database DATABASE NAME]
 EOF
 }
 
@@ -11,8 +15,6 @@ die(){
   exit 1
 }
 
-show_help
-exit 0 
 
 # var inititalization
 _backupdir=
@@ -20,6 +22,25 @@ _container=
 _dbname=
 _dump="/dump"
 
+while :; do
+ case $1 in
+  -h|-\?|--help)
+    show_help
+    exit
+    ;;
+  -d|--directory)
+    if ["$2"]; then
+      _backupdir=$2
+      shift
+    else
+      die 'ERROR: "--file" requires a non-empty argument.'
+    fi
+    ;;
+   *)
+    break 
+  esac
+  shift
+done
 # check direcory exists, make if not exists
 if [ ! -d $_backupdir ]
 then
