@@ -36,6 +36,22 @@ while :; do
       die 'ERROR: "-d, --directory" requires a non-empty argument.'
     fi
     ;;
+  -c|--container)
+    if ["$2"]; then
+      _container=$2
+      shift
+    else
+      die 'ERROR: "-c, --container" requires a non-empty argument.'
+    fi
+    ;;
+  -db|--database)
+    if ["$2"]; then
+      _dbname=$2
+      shift
+    else
+      die 'ERROR: "-db, --database" requires a non-empty argument.'
+    fi
+    ;;
   --)
     shift
     break
