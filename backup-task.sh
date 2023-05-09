@@ -67,11 +67,13 @@ if [ ! $_backupdir ]
 then
   die 'ERROR: "-d, --directory" argument is reqired. '
 fi
-if [ ! $_container]
+
+if [ ! $_container ]
 then
   die 'ERROR: "-c, --container" argument is reqired. '
 fi
-if [ ! $_dbna]
+
+if [ ! $_dbname ]
 then
   die 'ERROR: "-db, --database" argument is reqired. '
 fi
