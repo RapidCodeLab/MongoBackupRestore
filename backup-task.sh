@@ -61,6 +61,20 @@ while :; do
   esac
   shift
 done
+
+if [ ! $_backupdir ]
+then
+  die 'ERROR: "-d, --directory" argument is reqired. '
+fi
+if [ ! $_container]
+then
+  die 'ERROR: "-c, --container" argument is reqired. '
+fi
+if [ ! $_dbna]
+then
+  die 'ERROR: "-db, --database" argument is reqired. '
+fi
+
 # check direcory exists, make if not exists
 if [ ! -d $_backupdir ]
 then
@@ -78,5 +92,6 @@ _container_path="$_container:$_dump"
 docker cp $_container_path $_backupdir
 tar czf "$_backupdir/$_current_date.tar.gz"
 # Exit with done message
+echo "Backup complete"
 exit 0
 
