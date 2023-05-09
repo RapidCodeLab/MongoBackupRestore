@@ -29,7 +29,8 @@ while :; do
     exit
     ;;
   -d|--directory)
-    if ["$2"]; then
+    if [ $2 ]
+    then
       _backupdir=$2
       shift
     else
@@ -37,7 +38,7 @@ while :; do
     fi
     ;;
   -c|--container)
-    if ["$2"]; then
+    if [ $2 ]; then
       _container=$2
       shift
     else
@@ -45,7 +46,7 @@ while :; do
     fi
     ;;
   -db|--database)
-    if ["$2"]; then
+    if [ $2 ]; then
       _dbname=$2
       shift
     else
