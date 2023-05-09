@@ -93,7 +93,7 @@ _current_date=`date '+%d-%m-%y'`
 docker exec -i $_container /usr/bin/mongodump --db $_dbname --out $_dump 
 _container_path="$_container:$_dump"
 docker cp $_container_path $_backupdir
-tar czf "$_backupdir/$_current_date.tar.gz"
+tar czf "$_backupdir/$_current_date.tar.gz" $_backupdir 
 # Exit with done message
 echo "Backup complete"
 exit 0
